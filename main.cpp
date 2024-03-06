@@ -1,5 +1,6 @@
 #include <iostream>
 #include "string"
+#include <cmath>
 using namespace std;
 
 /// ejercicio 1
@@ -91,8 +92,98 @@ int ejercicio3() {
     return 0;
 }
 
+/// ejercicio 5
+int ejercicio5(){
+    int tamano;
+
+    //solicitamos al usuario que ingrese el tamaño del patron
+    cout << "ingrese un numero entero impar para imprimir la imagen: ";
+    cin >> tamano;
+
+    //verificamos que el numero ingresado sea impar
+    while(tamano%2 == 0){
+        cout << "el numero ingresado no es un numero impar \n";
+        cout << "ingrese nuevamente un numero impar: ";
+        cin >> tamano;
+    }
+    // Calcular la mitad del tamaño para determinar el número de filas de la parte superior e inferior del patrón
+    int mitad = tamano / 2 + 1;
+
+    // Imprimir la parte superior del patrón
+    for (int i = 1; i <= mitad; i++) {
+        // Imprimir espacios en blanco necesarios antes de cada asterisco
+        for (int j = 1; j <= mitad - i; j++) {
+            cout << " ";
+        }
+        // Imprimir asteriscos
+        for (int k = 1; k <= 2 * i - 1; k++) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+
+    // Imprimir la parte inferior del patrón
+    for (int i = mitad - 1; i >= 1; i--) {
+        // Imprimir espacios en blanco antes de cada asterisco
+        for (int j = 1; j <= mitad - i; j++) {
+            cout << " ";
+        }
+        // Imprimir asteriscos
+        for (int k = 1; k <= 2 * i - 1; k++) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
+/// ejercicio 7
+int ejercicio7(){
+    //declaramos las variables que vamos a utilizar
+    int A = 1;
+    int B = 1;
+    int suma = 0;
+    int numero;
+    //pedimos que ingrese un numero cualquiera
+    cout << "ingrese un numero: ";
+    cin >> numero;
+    //utilizamos un bucle sencillo para realizar la serie de Fibonacci
+    while (B < numero){
+        int C = A + B;
+        A = B;
+        B = C;
+
+        //verificamos en cada iteracion si C es un numero par
+        if (C % 2 == 0){
+            //se suman todos los numero pares verificados
+            suma += C;
+        }
+    }
+    cout << "el resultado de la suma es : "<<suma<<"\n";
+    return 0;
+}
+
+/// ejercicio 9
+int ejercicio9() {
+    //declaramos y pedimos variables
+    int Numero;
+    int suma = 0;
+    cout << "Ingrese un numero entero: ";
+    cin >> Numero;
+
+    while (Numero > 0) {
+        int indice = Numero % 10; //utilizamos modulo para sacar el ultimo digito del numero ingresado
+        suma += pow(indice, indice); // lo utilizamos para realizar la potencia
+        Numero /= 10; // eliminamos el ultimo digito del numero ingresado
+    }
+    cout << "El resultado de la suma de los digitos elevados a si mismo es: " << suma<< "\n";
+    return 0;
+}
+
+
 int main()
 {
-    ejercicio3();
+    ejercicio9();
     return 0;
 }
